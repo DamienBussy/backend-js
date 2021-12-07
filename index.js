@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT;
 const apiRouter = require('./routes/apiRouter').router;
 
+
 app.use('/api/', apiRouter);
 
 app.listen(port, () => {
@@ -12,5 +13,5 @@ app.listen(port, () => {
 
 app.get('/', function (req, res){
     res.setHeader('Content-Type', 'text/html');
-    res.status(200).send('My Page');
+    res.status(201).send('My Page');
 })

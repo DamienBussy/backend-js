@@ -1,11 +1,12 @@
 const models = require('../models');
 
 module.exports = {
-    // Créé un user
-    getCreateUser:function(req, res)
+    // Créé un user  
+    CreateUser:function(req, res)
     {
-        models.User.create({ where: {id: 'id', firstname: 'firstname', lastname: 'lastname'} })
-        .then(function(user) {
+        models.User.create()
+        .then(function(user)
+        {
             res.status(201).json(user)
         })
     },
@@ -29,7 +30,7 @@ module.exports = {
     },
 
     // Update un user
-    getUpdateUser:function(req, res)
+    UpdateUser:function(req, res)
     {
         models.User.update({ where: {firstname: 'firstname', lastname: 'lastname'} })
         .then(function(user) {
@@ -38,9 +39,9 @@ module.exports = {
     },
 
     // Delete un user
-    getDeleteUser:function(req, res)
+    DeleteUser:function(req, res)
     {
-        models.User.delete(user)
+        models.User.delete()
         .then(function(user) {
             res.status(201).json(user)
         })
