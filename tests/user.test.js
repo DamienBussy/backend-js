@@ -38,7 +38,7 @@ describe('Test : cannot get one user', function(){
 describe('Test : cannot update an user', function(){
     it('responds with json', function(done){
         request(app)
-        .post('/api/updateuser')
+        .put('/api/updateuser')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(201, done);
@@ -49,7 +49,7 @@ describe('Test : cannot update an user', function(){
 describe('Test : cannot delete an user', function(){
     it('responds with json', function(done){
         request(app)
-        .post('/api/deleteuser')
+        .delete('/api/deleteuser')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(201, done);
