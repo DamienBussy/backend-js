@@ -2,12 +2,11 @@ const models = require('../models');
 
 module.exports = {
     // Créé un user  
-    CreateUser:function(req, res)
+    CreateUser: function (req, res) 
     {
-        models.User.create()
-        .then(function(user)
-        {
-            res.status(201).json(user)
+        models.User.create({ firstname: req.body.firstname, lastname: req.body.lastname }        
+        ).then(function (user) {        
+        res.status(201).json(user)        
         })
     },
 
@@ -23,8 +22,8 @@ module.exports = {
     //Un seul user
     getOneUser:function(req, res)
     {
-        models.User.findOne({id: 'id'})
-        .then(function(user) {
+        models.User.findOne({where:{id: req.body.id}}
+        ).then(function(user) {
             res.status(201).json(user)
         })
     },
@@ -32,7 +31,7 @@ module.exports = {
     // Update un user
     UpdateUser:function(req, res)
     {
-        models.User.update({ where: {firstname: 'firstname', lastname: 'lastname'} })
+        models.User.update({ firstname: req.body.firstname, lastname : req.body.lastname } , { where: { id: req.body.id } })
         .then(function(user) {
             res.status(201).json(user)
         })
@@ -41,7 +40,7 @@ module.exports = {
     // Delete un user
     DeleteUser:function(req, res)
     {
-        models.User.delete()
+        models.User.destroy({ where: { id: req.body.id } })
         .then(function(user) {
             res.status(201).json(user)
         })
